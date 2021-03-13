@@ -1,0 +1,1 @@
+allure serve C:\Dev\projects\aqa-framework\aqa-example-api\allure-results
