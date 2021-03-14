@@ -6,7 +6,7 @@ import ru.gwp.api.rest.RestRequest;
 import ru.gwp.api.rest.RestResponse;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static ru.gwp.ExampleApiModule.DIContainer.getStringValueOf;
+import static ru.gwp.ExampleApiModule.container;
 import static ru.gwp.constants.Header.X_API_KEY;
 import static ru.gwp.constants.RequestMethod.GET;
 
@@ -37,7 +37,7 @@ final class TheCatApiImpl extends BaseRestApiImpl implements TheCatApi {
     String keyName = X_API_KEY.getName();
     RestResponse response =
         request()
-            .addHeader(keyName, getStringValueOf(keyName))
+            .addHeader(keyName, container().getStringValueOf(keyName))
             .setBasePath(categoriesPath)
             .execute(GET);
     return checkNotNull(response);

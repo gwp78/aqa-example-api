@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static java.lang.ThreadLocal.withInitial;
-import static ru.gwp.ExampleApiModule.DIContainer.getInstance;
+import static ru.gwp.ExampleApiModule.container;
 import static ru.gwp.report.Allure.tms;
 import static ru.gwp.steps.assertion.BaseAssertionSteps.assertNotEmpty;
 
@@ -27,7 +27,7 @@ public final class TheCatApiTest {
 
   private static final ThreadLocal<Map<String, Object>> STORAGE = withInitial(HashMap::new);
   private static final TheCatApiSteps THE_CAT_API_STEPS =
-      getInstance(TheCatApiStepsFactory.class).create(STORAGE);
+      container().getInstance(TheCatApiStepsFactory.class).create(STORAGE);
 
   @Test
   @DisplayName("Get categories request returns not empty list")
